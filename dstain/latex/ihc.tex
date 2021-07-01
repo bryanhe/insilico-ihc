@@ -1,0 +1,25 @@
+% Template for generating pdf with images and masks.
+% Used by dstain/command/visualize/register.py
+
+\documentclass{beamer}
+
+\usepackage{graphicx}
+
+\beamertemplatenavigationsymbolsempty
+
+\usetheme{metropolis}
+\usecolortheme{default}
+\pagestyle{empty}
+
+\begin{document}
+
+\BLOCK{for file in files}
+\begin{frame}
+  \begin{center}
+    \VAR{file[1].replace("_", " ")}: \VAR{file[0]}
+    \includegraphics[height=0.9\textheight, width=0.9\textwidth, keepaspectratio]{\VAR{root}/{\VAR{file[1]}}.jpg}
+  \end{center}
+\end{frame}
+\BLOCK{endfor}
+
+\end{document}

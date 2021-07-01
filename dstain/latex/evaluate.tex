@@ -1,0 +1,45 @@
+\documentclass{beamer}
+\begin{document}
+\BLOCK{for sample in samples}
+\begin{frame}
+  \frametitle{\VAR{stain} \VAR{target}: \VAR{sample.name.replace("_", " ")} (Real: \VAR{"{:.2f}".format(sample.real)}) (Predicted: \VAR{"{:.2f}".format(sample.pred)})}
+  \begin{center}
+    \begin{tabular}{ccc}
+    H\&E  &
+    \includegraphics[height=0.9\textheight,width=0.3\textwidth,keepaspectratio]{../registration/\VAR{sample.name}/2_register/\VAR{sample.he}.jpg} &
+    \includegraphics[height=0.9\textheight,width=0.3\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "-")}_pred.pdf}  \\
+    \BLOCK{if sample.ihc != ""}
+    \VAR{stain} \VAR{target} &
+    \includegraphics[height=0.9\textheight,width=0.3\textwidth,keepaspectratio]{../registration/\VAR{sample.name}/2_register/\VAR{sample.ihc}.jpg} &
+    \includegraphics[height=0.9\textheight,width=0.3\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "-")}_value.pdf}  \\
+    \BLOCK{endif}
+    \end{tabular}
+  \end{center}
+\end{frame}
+% \begin{frame}
+%   \frametitle{\VAR{stain} \VAR{target}: \VAR{sample.name.replace("_", " ")} (Real: \VAR{"{:.2f}".format(sample.real)}) (Predicted: \VAR{"{:.2f}".format(sample.pred)})}
+%   \begin{center}
+%     \begin{tabular}{cc}
+%     Low & High \\
+%     \BLOCK{for i in range(4)}
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/low/\VAR{i}_h.jpg}
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/low/\VAR{i}_attr.png}
+%     \BLOCK{if sample.ihc != ""}
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/low/\VAR{i}_ihc.jpg}
+%     \BLOCK{endif}
+%     &
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/high/\VAR{i}_h.jpg}
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/high/\VAR{i}_attr.png}
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/high/\VAR{i}_traced.jpg}
+%     \BLOCK{if sample.ihc != ""}
+%     \includegraphics[width=0.12\textwidth]{../patches/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "-")}/high/\VAR{i}_ihc.jpg}
+%     \BLOCK{endif}
+%     \\
+%     \BLOCK{endfor}
+%     \end{tabular}
+%   \end{center}
+% \end{frame}
+
+\BLOCK{endfor}
+
+\end{document}

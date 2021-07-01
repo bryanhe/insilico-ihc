@@ -1,0 +1,12 @@
+\documentclass{beamer}
+\begin{document}
+\BLOCK{for sample in samples}
+\begin{frame}
+  \frametitle{\VAR{sample.name.replace("_", " ")}}
+  \begin{center}
+    \includegraphics[height=0.4\textheight,width=0.4\textwidth,keepaspectratio]{../registration/\VAR{sample.name}/2_register/\VAR{sample.he}_img_warp.jpg}
+    \includegraphics[height=0.4\textheight,width=0.4\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/lfb.pdf}
+  \end{center}
+\end{frame}
+\BLOCK{endfor}
+\end{document}

@@ -1,0 +1,29 @@
+% Template for generating pdf with registered images.
+% Used by dstain/command/visualize/register.py
+
+\documentclass{beamer}
+
+\usepackage{graphicx}
+
+\beamertemplatenavigationsymbolsempty
+
+\usetheme{metropolis}
+\usecolortheme{default}
+\pagestyle{empty}
+
+\begin{document}
+
+\BLOCK{for sample in samples}
+\section{\VAR{sample.name.replace("_", " ")}}
+\BLOCK{for slide in sample.slides}
+\begin{frame}
+  \begin{center}
+    \VAR{sample.name.replace("_", " ")} \VAR{slide.replace("_", " ")}
+    \includegraphics[height=0.9\textheight, width=0.9\textwidth, keepaspectratio]{\VAR{root}/\VAR{sample.name}/2_register/\VAR{slide}_img_warp.jpg}
+  \end{center}
+\end{frame}
+
+\BLOCK{endfor}
+\BLOCK{endfor}
+
+\end{document}

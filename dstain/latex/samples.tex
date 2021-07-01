@@ -1,0 +1,41 @@
+% Template for generating pdf with samples.
+% Used by dstain/command/visualize/samples.py
+
+\documentclass{beamer}
+
+\usepackage{graphicx}
+
+\beamertemplatenavigationsymbolsempty
+
+\usetheme{metropolis}
+\usecolortheme{default}
+\pagestyle{empty}
+
+\begin{document}
+
+\BLOCK{for p in patients}
+\begin{frame}
+  \begin{center}
+    \frametitle{\VAR{p.name.replace("_", " ")}}
+    \begin{tabular}{c\BLOCK{for s in stains}c\BLOCK{endfor}}
+\BLOCK{for s in stains}
+      & \VAR{s}
+\BLOCK{endfor}
+      \\
+\BLOCK{for r in p.slides}
+      \raisebox{-0.5\height}{\VAR{r.name}}
+\BLOCK{for s in r.slides}
+      &
+\BLOCK{if s != ""}
+      \raisebox{-0.5\height}{\includegraphics[scale=0.05]{\VAR{root}/\VAR{s[0]}/1_thumbnail/\VAR{s[1]}.jpg}}
+\BLOCK{endif}
+\BLOCK{endfor}
+      \\
+\BLOCK{endfor}
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\BLOCK{endfor}
+
+\end{document}

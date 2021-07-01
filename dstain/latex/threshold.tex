@@ -1,0 +1,21 @@
+\documentclass{beamer}
+\begin{document}
+\BLOCK{for sample in samples}
+\BLOCK{if sample.ihc != ""}
+\begin{frame}
+  \frametitle{\VAR{stain} \VAR{target}: \VAR{sample.name.replace("_", " ")} (Real: \VAR{"{:.2f}".format(sample.real)}) (Predicted: \VAR{"{:.2f}".format(sample.pred)})}
+  \begin{center}
+    %H\&E 
+    \includegraphics[height=0.9\textheight,width=0.24\textwidth,keepaspectratio]{../registration/\VAR{sample.name}/2_register/\VAR{sample.he}.jpg}
+    \includegraphics[height=0.9\textheight,width=0.24\textwidth,keepaspectratio]{../registration/\VAR{sample.name}/2_register/\VAR{sample.ihc}.jpg} \\
+    \includegraphics[height=0.9\textheight,width=0.24\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "-")}_pred_very_low.pdf}
+    \includegraphics[height=0.9\textheight,width=0.24\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "-")}_pred_low.pdf}
+    \includegraphics[height=0.9\textheight,width=0.24\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "-")}_pred_med.pdf}
+    \includegraphics[height=0.9\textheight,width=0.24\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "-")}_pred_high.pdf}
+  \end{center}
+\end{frame}
+
+\BLOCK{endif}
+\BLOCK{endfor}
+
+\end{document}

@@ -1,0 +1,34 @@
+% Template for generating pdf with images and masks.
+% Used by dstain/command/visualize/register.py
+
+\documentclass{beamer}
+
+\usepackage{graphicx}
+
+\beamertemplatenavigationsymbolsempty
+
+\usetheme{metropolis}
+\usecolortheme{default}
+\pagestyle{empty}
+
+\begin{document}
+
+\BLOCK{for sample in samples}
+\BLOCK{for slide in sample.slides}
+\begin{frame}
+  \begin{center}
+    \VAR{sample.name.replace("_", " ")} \VAR{slide.replace("_", " ")}
+    \includegraphics[height=0.9\textheight, width=0.9\textwidth, keepaspectratio]{\VAR{root}/\VAR{sample.name}/1_thumbnail/\VAR{slide}.jpg}
+  \end{center}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \VAR{sample.name.replace("_", " ")} \VAR{slide.replace("_", " ")}
+    \includegraphics[height=0.9\textheight, width=0.9\textwidth, keepaspectratio]{\VAR{root}/\VAR{sample.name}/1_thumbnail/\VAR{slide}_mask.png}
+  \end{center}
+\end{frame}
+
+\BLOCK{endfor}
+\BLOCK{endfor}
+
+\end{document}

@@ -1,0 +1,27 @@
+% Template for generating table of stains available for each region
+% Used by dstain/command/process.py
+
+\documentclass{article}
+
+\usepackage{booktabs}
+
+\newcommand{\VAR}[1]{}
+\newcommand{\BLOCK}[1]{}
+
+\begin{document}
+
+\begin{tabular}{lrrrrr}
+  \toprule
+  Region & \multicolumn{\VAR{stains|length}}{c}{Stain} \\
+  \cmidrule{2-\VAR{stains|length + 1}}
+        \BLOCK{+ for s in stains} & \VAR{s}\BLOCK{endfor} \\
+  \midrule
+  \BLOCK{for r in regions}
+  \VAR{r.name}\BLOCK{for c in r.count} & \VAR{c}\BLOCK{endfor} \\
+  \BLOCK{endfor}
+  \midrule
+  Total \BLOCK{for c in total} & \VAR{c}\BLOCK{endfor} \\
+  \bottomrule
+\end{tabular}
+
+\end{document}

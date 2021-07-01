@@ -1,0 +1,33 @@
+\documentclass{beamer}
+\begin{document}
+\BLOCK{for sample in samples}
+\BLOCK{if sample.ihc != ""}
+\begin{frame}
+  \frametitle{\VAR{stain} \VAR{target}: \VAR{sample.name.replace("_", " ")} (Real: \VAR{"{:.2f}".format(sample.real)})}
+  \begin{center}
+    \includegraphics[height=0.9\textheight,width=0.9\textwidth,keepaspectratio]{../registration/\VAR{sample.name}/2_register/\VAR{sample.ihc}_img_warp.jpg}
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{\VAR{stain} \VAR{target}: \VAR{sample.name.replace("_", " ")} (Real: \VAR{"{:.2f}".format(sample.real)})}
+  \begin{center}
+    \includegraphics[height=0.9\textheight,width=0.9\textwidth,keepaspectratio]{../heatmap/\VAR{sample.name}/\VAR{stain}_\VAR{target.lower().replace(" ", "_")}_value.pdf}  \\
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{\VAR{stain} \VAR{target}: \VAR{sample.name.replace("_", " ")} (Real: \VAR{"{:.2f}".format(sample.real)})}
+  \begin{center}
+\BLOCK{for v in sample.ihc_values}
+    \begin{tabular}{c}
+      \VAR{"{:.2f}".format(v)} \\
+      \includegraphics[height=0.1\textheight,width=0.1\textwidth,keepaspectratio]{../ihc/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "_")}/h_\VAR{loop.index0}.jpg}
+      \includegraphics[height=0.1\textheight,width=0.1\textwidth,keepaspectratio]{../ihc/\VAR{sample.name}/\VAR{stain}/\VAR{target.lower().replace(" ", "_")}/ihc_\VAR{loop.index0}.jpg}
+    \end{tabular}
+\BLOCK{endfor}
+  \end{center}
+\end{frame}
+
+\BLOCK{endif}
+\BLOCK{endfor}
+
+\end{document}
