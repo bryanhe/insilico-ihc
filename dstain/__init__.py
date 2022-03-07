@@ -18,18 +18,12 @@ del click
 
 
 main.add_command(command.analyze)
-main.add_command(command.annotate)
 main.add_command(command.baseline)
-main.add_command(command.deepzoom)
 main.add_command(command.evaluate)
-main.add_command(command.example)
 main.add_command(command.ihc)
-main.add_command(command.oracle)
 main.add_command(command.process)
 main.add_command(command.register)
-main.add_command(command.stain)
 main.add_command(command.train)
-main.add_command(command.ui)
 main.add_command(command.visualize)
 
 __all__ = [

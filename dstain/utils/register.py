@@ -21,7 +21,6 @@ import tqdm
 import zipfile
 
 import dstain
-import kornia
 import openslide
 
 
@@ -450,6 +449,7 @@ def adjust_keypoints(slide, filenames, transform, otsu, keypoint, downsample, im
     adjust = np.array(sorted(adjust)) * downsample
 
     def f(arg):
+        import kornia
         (j, (x, y)) = arg
         # Load patch from base
         ref = dstain.utils.openslide.read_region_at_mag(slide[0], (x - adjust_context, y - adjust_context), 40, (adjust_window + 2 * adjust_context, adjust_window + 2 * adjust_context), downsample=adjust_downsample)
@@ -521,6 +521,7 @@ def adjust_keypoints(slide, filenames, transform, otsu, keypoint, downsample, im
 
 
 def adjust_coarse(block, tissue_mask, image, homography_matrix):
+    import kornia
     n0, m0 = tissue_mask[0].shape
     transformed_image = []
     new_homography_matrix = []
